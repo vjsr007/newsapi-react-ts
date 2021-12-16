@@ -1,4 +1,5 @@
 import { get } from '../Api'
+import { Request } from '../models/Everything'
 const { NEWS_ENDPOINT, SOURCES_ENDPOINT } = require('../constants/constants')
 
 type getNewsParams = {
@@ -26,14 +27,14 @@ const getRange = ({ to, from }: getRangeParams) => {
 }
 
 export const changeNews = ({
-  page = 1,
-  q = '*',
-  sources = '',
-  sortBy = '',
-  language = '',
-  to = null,
-  from = null,
-}) => {
+  page,
+  q,
+  sources,
+  sortBy,
+  language,
+  to,
+  from,
+}: Request) => {
   const query = `q=${q}&page=${page}&sources=${sources}&sortBy=${sortBy}&language=${language}${getRange(
     { to, from }
   )}`

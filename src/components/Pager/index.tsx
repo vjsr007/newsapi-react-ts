@@ -18,7 +18,7 @@ const Pager:
       onChange({ page })
     }, [page])
 
-    const calculatePages = () => (numberOfItems || 0 > 0 ? Math.ceil(numberOfItems || 0 / (pageSize || 20)) : 1)
+    const calculatePages = () => ((numberOfItems || 0) > 0 ? Math.ceil((numberOfItems || 0) / (pageSize || 20)) : 1)
     const goToFirst = () => {
       setPage(1)
     }
