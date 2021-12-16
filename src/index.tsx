@@ -12,6 +12,6 @@ import 'whatwg-fetch'
 import './index.css'
 
 ReactDOM.render(
-    <h1>Hello React!</h1>,
+    <h1>Hello React/Typescript!</h1>,
     document.getElementById('app-root'),
 )
