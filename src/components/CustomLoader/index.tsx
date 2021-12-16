@@ -1,14 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
-import styles from './customLoader.scss'
+import styles from './styles.scss'
 
 export const loaders = {
   spin: 'spin',
   cube: 'cube',
 }
 
-const CustomLoader = ({ defaultLoader }) => {
+const CustomLoader:FunctionComponent<({ defaultLoader: string })> = ({ defaultLoader }) => {
   const spin = () => (
     <div className={styles.sk_fading_circle}>
       <div className={`${styles.sk_circle1} ${styles.sk_circle}`} />
@@ -54,10 +53,6 @@ const CustomLoader = ({ defaultLoader }) => {
 
 CustomLoader.defaultProps = {
   defaultLoader: loaders.cube,
-}
-
-CustomLoader.propTypes = {
-  defaultLoader: PropTypes.string,
 }
 
 export default CustomLoader
