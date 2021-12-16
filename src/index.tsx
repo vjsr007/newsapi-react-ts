@@ -9,9 +9,11 @@ import 'core-js/features/set'
 import 'raf/polyfill'
 import 'whatwg-fetch'
 
+import App from './App'
+
 import './index.css'
 
 ReactDOM.render(
-    <h1>Hello React/Typescript!</h1>,
+    <App />,
     document.getElementById('app-root'),
 )
