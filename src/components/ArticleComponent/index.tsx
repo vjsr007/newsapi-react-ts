@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { ArticleItem } from '../../models/ArticleItem';
+import { Article } from '../../models/Article';
 
 import styles from './styles.scss'
 
-const ArticleComponent: FunctionComponent<({ item: ArticleItem })> = ({ item }) => (
+const ArticleComponent: FunctionComponent<({ item: Article })> = ({ item }) => (
   <div className={styles.component}>
     <div className={styles.header}>
       <div className={styles.title}>{item.title}</div>
@@ -26,7 +26,7 @@ const ArticleComponent: FunctionComponent<({ item: ArticleItem })> = ({ item }) 
 );
 
 ArticleComponent.defaultProps = {
-  item: {} as ArticleItem,
+  item: {} as Article,
 }
 
 export default ArticleComponent;

@@ -1,8 +1,14 @@
 // NewsApi: https://newsapi.org/ Article model definition
-import { ArticleItem } from './ArticleItem';
+import { Source } from './Source';
 
 export interface Article {
-    status: string;
-    totalResults: number;
-    articles: ArticleItem[];
+    source: Source;
+    id: string;
+    title: string;
+    description: string;
+    url: string;
+    urlToImage: string;
+    publishedAt: string;
+    content: string;
+    author: string;
 }

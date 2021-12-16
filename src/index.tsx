@@ -9,6 +9,8 @@ import 'core-js/features/set'
 import 'raf/polyfill'
 import 'whatwg-fetch'
 
+import './styles/global.scss'
+
 import App from './App'
 
 import './index.css'

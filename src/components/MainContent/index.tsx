@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FunctionComponent } from 'react'
 
 import ArticleContainer from '../ArticleContainer'
 import CustomLoader, { loaders } from '../CustomLoader'
-
-import styles from './mainContent.scss'
 import Notification from '../Notification'
-import { types } from '../Notification/Notification'
+import { types } from '../Notification'
+import { Everything } from '../../models/Everything'
 
-const MainContent = ({ data, error }) => (
+import styles from './styles.scss'
+
+const MainContent:FunctionComponent<({ data: Everything, error?: string | undefined })> = ({ data, error }) => (
   <div className={styles.component}>
     {data?.articles?.length > 0 ? (
       <ArticleContainer data={data} />
@@ -22,13 +22,12 @@ const MainContent = ({ data, error }) => (
 )
 
 MainContent.defaultProps = {
-  data: {},
-  error: null,
-}
-
-MainContent.propTypes = {
-  data: PropTypes.object,
-  error: PropTypes.string,
+  data: {
+    articles: [],
+    totalResults: 0,
+    status: '',
+  },
+  error: '',
 }
 
 export default MainContent

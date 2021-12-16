@@ -1,7 +1,11 @@
 import { get } from '../Api'
-import { NEWS_ENDPOINT, SOURCES_ENDPOINT } from '../constants/constants'
+const { NEWS_ENDPOINT, SOURCES_ENDPOINT } = require('../constants/constants')
 
-export const getNews = ({ query }) => {
+type getNewsParams = {
+  query: string,
+}
+
+export const getNews = ({ query }: getNewsParams) => {
   const url = NEWS_ENDPOINT.replace('{{QUERY_SEARCH}}', query)
   return get({ url })
 }
@@ -11,7 +15,12 @@ export const getSources = () => {
   return get({ url })
 }
 
-const getRange = ({ to, from }) => {
+type getRangeParams = {
+  to: string | null,
+  from: string | null,
+}
+
+const getRange = ({ to, from }: getRangeParams) => {
   if (!to || !from) return ''
   return `&from=${from}&to=${to}`
 }
@@ -28,5 +37,5 @@ export const changeNews = ({
   const query = `q=${q}&page=${page}&sources=${sources}&sortBy=${sortBy}&language=${language}${getRange(
     { to, from }
   )}`
-  return getNews({ query })
+  return getNews({ query } as getNewsParams)
 }

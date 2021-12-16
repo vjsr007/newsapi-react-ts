@@ -1,14 +1,16 @@
 import React, { FunctionComponent, useState, useEffect, FocusEvent } from 'react'
 
-import styles from './dropdown.scss'
 import CustomLoader, { loaders } from '../CustomLoader'
+
+import styles from './styles.scss'
 
 type Option = {
   id: string,
   name: string,
 }
+
 const Dropdown:
-  FunctionComponent<({ options: Option[], defaultText: string, multiSelect: boolean, onChange: Function })> =
+  FunctionComponent<({ options: Option[], defaultText?: string, multiSelect?: boolean, onChange: Function })> =
   ({ options, defaultText, multiSelect, onChange }) => {
     const [open, setOpen] = useState<boolean>(false)
     const [selected, setSelected] = useState<string[]>([])

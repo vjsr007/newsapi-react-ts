@@ -11,12 +11,6 @@ module.exports = () => {
     process.env.PUBLIC_URL = 'public'
   }
 
-  const ModuleNames = ['']
-
-  const GlobalSCSSPaths = ModuleNames.map(name =>
-    path.resolve(__dirname, `src/${name ? `${name}/` : ''}styles`)
-  )
-
   return {
     mode: prod ? 'production' : 'development',
     entry: './src/index.tsx',
@@ -35,7 +29,6 @@ module.exports = () => {
         },
         {
           test: /\.scss$/,
-          exclude: /styles/,
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
@@ -47,21 +40,6 @@ module.exports = () => {
                   localIdentName: '[hash:base64:5]',
                 },
               },
-            },
-            {
-              loader: 'sass-loader',
-            },
-          ],
-        },
-        {
-          test: /\.scss$/,
-          include: GlobalSCSSPaths,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            {
-              loader: 'css-loader',
             },
             {
               loader: 'sass-loader',

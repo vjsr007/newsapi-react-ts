@@ -3,7 +3,7 @@ import React, { ChangeEventHandler, FunctionComponent } from 'react'
 import styles from './styles.scss'
 
 const CustomInput:
-  FunctionComponent<({ onChange: ChangeEventHandler, defaultTitle: string, defaultPlaceholder: string })> =
+  FunctionComponent<({ onChange: ChangeEventHandler<HTMLInputElement>, defaultTitle?: string, defaultPlaceholder?: string })> =
   ({ onChange, defaultTitle, defaultPlaceholder }) => (
     <input
       type="text"

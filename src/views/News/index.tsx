@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 
-import FilterNav from '../components/FilterNav'
-import MainContent from '../components/MainContent'
-import { changeNews } from '../services/newsService'
+import FilterNav from '../../components/FilterNav'
+import MainContent from '../../components/MainContent'
+import { changeNews } from '../../services/newsService'
 
-import { Article } from '../models/Article'
+import { Everything } from '../../models/Everything'
 
-import styles from './news.scss'
+import styles from './styles.scss'
 
 const News = () => {
-  const [articles, setArticles] = useState<Article>(new Article('', 0, []))
-  const [error, setError] = useState<string | null>(null)
+  const [articles, setArticles] = useState<Everything>({} as Everything)
+  const [error, setError] = useState<string | undefined>(undefined)
 
   const handleArticleError = (message:string) => {
     setError(message)

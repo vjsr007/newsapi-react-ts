@@ -1,10 +1,11 @@
 import React from 'react'
 
 import styles from './App.scss'
+import News from './views/News'
 
 const App = () => (
   <div className={styles.component}>
-    <h1>Hello React/Typescript</h1>
+    <News />
   </div>
 )
 

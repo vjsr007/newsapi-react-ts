@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 
-import styles from './notification.scss'
+import styles from './styles.scss'
 
-export const types = {
-  sucess: 'success',
-  error: 'error',
-  warning: 'warning',
+export enum types {
+  sucess = 'success',
+  error = 'error',
+  warning = 'warning',
 }
 
-const Notification = ({ message, hide, type, children }) => {
+const Notification: FunctionComponent<({ message?: string, hide?: boolean, type: types, children?: any })> = ({ message, hide, type, children }) => {
   const [show, setShow] = useState(false)
 
   const executeInterval = () => {
@@ -42,13 +41,6 @@ Notification.defaultProps = {
   message: 'An error message',
   type: types.error,
   children: null,
-}
-
-Notification.propTypes = {
-  hide: PropTypes.bool,
-  message: PropTypes.string,
-  type: PropTypes.string,
-  children: PropTypes.any,
 }
 
 export default Notification

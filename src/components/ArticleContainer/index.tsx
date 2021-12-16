@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react'
 
-import styles from './styles.scss'
-import { Article } from '../../models/Article'
+import { Everything } from '../../models/Everything'
 import ArticleComponent from '../ArticleComponent'
 
-const ArticleContainer: FunctionComponent<({ data: Article })> = ({ data }) => (
+import styles from './styles.scss'
+
+const ArticleContainer: FunctionComponent<({ data: Everything })> = ({ data }) => (
   <div className={styles.component}>
     {data?.articles?.map((article, idx) => (
       <ArticleComponent key={`article${idx}`} item={article} />
@@ -13,7 +14,7 @@ const ArticleContainer: FunctionComponent<({ data: Article })> = ({ data }) => (
 )
 
 ArticleContainer.defaultProps = {
-  data: {} as Article,
+  data: {} as Everything,
 }
 
 export default ArticleContainer

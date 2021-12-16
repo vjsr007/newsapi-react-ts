@@ -1,4 +1,9 @@
-export const get = ({ url }) =>
+type fetchParams = {
+  url: string,
+  query?: string,
+}
+
+export const get = ({ url }: fetchParams) =>
   fetch(url)
     .then(response => {
       if (response.ok) {

@@ -5,7 +5,7 @@ import styles from './styles.scss'
 
 type CustomInputProps = { handleOnChange: ChangeEventHandler, defaultTitle: string, defaultPlaceholder: string };
 
-class CustomInputClass extends Component<CustomInputProps> {
+class CustomInputClass extends Component<{ handleOnChange: ChangeEventHandler, defaultTitle: string, defaultPlaceholder: string }> {
   static defaultProps = {
     handleOnChange: () => {},
     defaultTitle: 'input your text',
