@@ -1,5 +1,6 @@
 import Api from '../Api'
 import { Request } from '../models/Everything'
+import RequestBuilder from './requestNewsBuilder'
 const { NEWS_ENDPOINT, SOURCES_ENDPOINT } = require('../constants/constants')
 
 type getNewsParams = {
@@ -18,16 +19,6 @@ export const getSources = () => {
   return api.get(url)
 }
 
-type getRangeParams = {
-  to: string | null,
-  from: string | null,
-}
-
-const getRange = ({ to, from }: getRangeParams) => {
-  if (!to || !from) return ''
-  return `&from=${from}&to=${to}`
-}
-
 export const changeNews = ({
   page,
   q,
@@ -37,8 +28,15 @@ export const changeNews = ({
   to,
   from,
 }: Request) => {
-  const query = `q=${q}&page=${page}&sources=${sources}&sortBy=${sortBy}&language=${language}${getRange(
-    { to, from }
-  )}`
+  const query = new RequestBuilder()
+    .setQuery(q)
+    .setPage(page)
+    .setSources(sources)
+    .setSortBy(sortBy)
+    .setLanguage(language)
+    .setTo(to)
+    .setFrom(from)
+    .build()
+    
   return getNews({ query } as getNewsParams)
 }
