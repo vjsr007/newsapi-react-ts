@@ -12,7 +12,7 @@ const News = () => {
   const [articles, setArticles] = useState<Everything>({} as Everything)
   const [error, setError] = useState<string | undefined>(undefined)
 
-  const handleArticleError = (message:string) => {
+  const handleArticleError = (message:string) : void => {
     setError(message)
   }
 
