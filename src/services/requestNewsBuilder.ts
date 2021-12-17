@@ -50,4 +50,5 @@ class RequestNewsBuilder {
         return `q=${this.query}&page=${this.page}&sources=${this.sources}&sortBy=${this.sortBy}&language=${this.language}${this.to ? `&to=${this.to}` : ''}${this.from ? `&from=${this.from}` : ''}`
     }
 }
+
 export default RequestNewsBuilder

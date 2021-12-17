@@ -37,6 +37,6 @@ export const changeNews = ({
     .setTo(to)
     .setFrom(from)
     .build()
-    
+
   return getNews({ query } as getNewsParams)
 }
