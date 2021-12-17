@@ -1,6 +1,6 @@
 import Api from '../Api'
 import { Request } from '../models/Everything'
-import RequestBuilder from './requestNewsBuilder'
+import RequestNewsBuilder from './RequestNewsBuilder'
 const { NEWS_ENDPOINT, SOURCES_ENDPOINT } = require('../constants/constants')
 
 type getNewsParams = {
@@ -28,7 +28,7 @@ export const changeNews = ({
   to,
   from,
 }: Request) => {
-  const query = new RequestBuilder()
+  const query = new RequestNewsBuilder()
     .setQuery(q)
     .setPage(page)
     .setSources(sources)
