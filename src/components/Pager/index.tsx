@@ -19,18 +19,22 @@ const Pager:
     }, [page])
 
     const calculatePages = () => ((numberOfItems || 0) > 0 ? Math.ceil((numberOfItems || 0) / (pageSize || 20)) : 1)
+
     const goToFirst = () => {
       setPage(1)
     }
+
     const goToPrevious = () => {
       setPage(page > 1 ? page - 1 : page)
     }
     const goToNext = () => {
       setPage(page < calculatePages() ? page + 1 : page)
     }
+
     const goToLast = () => {
       setPage(calculatePages())
     }
+    
     const goTo = (where: enumAction) => {
       switch (where) {
         case enumAction.first:
