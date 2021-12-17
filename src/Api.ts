@@ -1,4 +1,4 @@
-// Create an API service with fetch using factory pattern & TypeScript
+// Create an API service with fetch using singleton pattern & TypeScript
 class Api {
     private static instance: Api;
 
