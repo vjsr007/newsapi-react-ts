@@ -1,4 +1,4 @@
-import { get } from '../Api'
+import Api from '../Api'
 import { Request } from '../models/Everything'
 const { NEWS_ENDPOINT, SOURCES_ENDPOINT } = require('../constants/constants')
 
@@ -6,14 +6,16 @@ type getNewsParams = {
   query: string,
 }
 
+const api = Api.getInstance()
+
 export const getNews = ({ query }: getNewsParams) => {
   const url = NEWS_ENDPOINT.replace('{{QUERY_SEARCH}}', query)
-  return get({ url })
+  return api.get(url)
 }
 
 export const getSources = () => {
   const url = SOURCES_ENDPOINT
-  return get({ url })
+  return api.get(url)
 }
 
 type getRangeParams = {
