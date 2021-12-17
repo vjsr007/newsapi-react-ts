@@ -4,7 +4,7 @@ class Api {
 
     private constructor() { }
 
-    private buildFetch = (url: string, method: string, data?: any) => {
+    private buildFetch = (url: string, method: string, data?: any): Promise<any> => {
         const fetchOptions: RequestInit = {
             method,
         };
