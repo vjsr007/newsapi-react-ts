@@ -44,7 +44,7 @@ const Dropdown:
     const selectOption = (option: Option) => {
       if (multiSelect) {
         setSelected(
-          selected?.some((id:string) => option.id === id)
+          selected?.some((id: string) => option.id === id)
             ? selected?.filter(id => option.id !== id)
             : [...selected, option.id]
         )
@@ -80,7 +80,7 @@ const Dropdown:
           ) : (
             ''
           )}
-          <label
+          <button
             id={`label_${option.id}`}
             onClick={ev => {
               selectOption(option)
@@ -89,17 +89,22 @@ const Dropdown:
             onMouseDown={ev => {
               ev.preventDefault()
             }}
-            htmlFor={`checkbox_${option.id}`}
             className={styles.name}
           >
-            {option.name}
-          </label>
+            <label
+              onMouseDown={ev => {
+                ev.preventDefault()
+                ev.stopPropagation()
+              }}
+              htmlFor={`checkbox_${option.id}`}>{option.name}
+            </label>
+          </button>
         </div>
       ))
     }
 
     return (
-      <div className={styles.component} onBlur= {hide}>
+      <div className={styles.component} onBlur={hide}>
         <button type="button" tabIndex={0} onClick={toggle}>
           <input
             type="text"

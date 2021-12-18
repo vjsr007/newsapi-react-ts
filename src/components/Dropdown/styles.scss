@@ -147,5 +147,10 @@
     color: white;
     text-align: left;
     padding: 0;
+    z-index: 2;
+
+    label {
+      z-index: 1;
+    }
   }
 }
