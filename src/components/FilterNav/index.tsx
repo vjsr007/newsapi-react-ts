@@ -15,13 +15,7 @@ const { lans, dates, sort } = require('../../constants/constants')
 const { getSources } = require('../../services/newsService')
 
 import styles from './styles.scss'
-import { addDays, formatDate } from '../../shared/utils'
-
-enum rangeDates {
-  week = 'week',
-  month = 'month',
-  year = 'year'
-}
+import { getRange } from '../../shared/utils'
 
 const FilterNav:
   FunctionComponent<({ totalResults: number, handleChangeNews: Function, filters: Request, setFilters: Function })> =
@@ -42,9 +36,11 @@ const FilterNav:
     }
 
     const changePage = ({ page } : Request) => {
-      const newState = { ...filters, page }
-      setFilters(newState)
-      setTempfilters(newState)
+      if(page !== filters.page) {
+        const newState = { ...filters, page }
+        setFilters(newState)
+        setTempfilters(newState)
+      }
     }
 
     const changeTopic:ChangeEventHandler<HTMLInputElement> = (event: ChangeEvent<HTMLInputElement>) => {
@@ -61,19 +57,6 @@ const FilterNav:
 
     const changeLanguage = (selectedOptions: string[]) => {
       setTempfilters({ ...tempFilters, language: selectedOptions[0] })
-    }
-
-    const getRange = (range: string) => {
-      const today: Date = new Date()
-      const to = today.toISOString()
-      switch (range) {
-        case rangeDates.week:
-          return { to, from: formatDate(addDays(today, -7).toISOString()) }
-        case rangeDates.month:
-          return { to, from: formatDate(addDays(today, -30).toISOString()) }
-        default:
-          return { to, from: formatDate(addDays(today, -1).toISOString()) }
-      }
     }
 
     const changeDate = (selectedOptions: string[]) => {
