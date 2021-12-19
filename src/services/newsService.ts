@@ -9,7 +9,8 @@ type getNewsParams = {
 
 const api = Api.getInstance()
 
-export const getNews = ({ query }: getNewsParams): Promise<any> => {
+export const getNews = (params: getNewsParams): Promise<any> => {
+  const { query } = params
   const url = NEWS_ENDPOINT.replace('{{QUERY_SEARCH}}', query)
   return api.get(url)
 }
@@ -19,15 +20,8 @@ export const getSources = (): Promise<any> => {
   return api.get(url)
 }
 
-export const changeNews = ({
-  page,
-  q,
-  sources,
-  sortBy,
-  language,
-  to,
-  from,
-}: Request) : Promise<any> => {
+export const changeNews = (request: Request) : Promise<any> => {
+  const { page, q, sources, sortBy, language, to, from } = request
   const query = new RequestNewsBuilder()
     .setQuery(q)
     .setPage(page)
