@@ -7,25 +7,15 @@ import CustomButton from '../CustomButton'
 
 import { Sources } from '../../models/Sources'
 import { Source } from '../../models/Source'
-import { Everything, Request } from '../../models/Everything'
+import { Request } from '../../models/Everything'
+
 import CustomLabel from '../CustomLabel'
 
 const { lans, dates, sort } = require('../../constants/constants')
 const { getSources } = require('../../services/newsService')
 
 import styles from './styles.scss'
-
-const initialFilterState: Request = {
-  page: 1,
-  sortBy: '',
-  language: '',
-  pageSize: 10,
-  q: '*',
-  sources: '',
-  domains: '',
-  from: '',
-  to: ''
-}
+import { addDays, formatDate } from '../../shared/utils'
 
 enum rangeDates {
   week = 'week',
@@ -34,25 +24,14 @@ enum rangeDates {
 }
 
 const FilterNav:
-  FunctionComponent<({ totalResults: number, changeNews: Function, setArticles: Function, handleArticleError: Function })> =
-  ({ totalResults, changeNews, setArticles, handleArticleError }) => {
+  FunctionComponent<({ totalResults: number, handleChangeNews: Function, filters: Request, setFilters: Function })> =
+  ({ totalResults, handleChangeNews, filters, setFilters }) => {
     const [sources, setSources] = useState<Source[]>([])
-    const [filters, setFilters] = useState<Request>(initialFilterState)
     const [tempFilters, setTempfilters] = useState<Request>(filters)
 
     useEffect(() => {
       getSources().then((data: Sources) => setSources(data.sources))
     }, [])
-
-    const handleChangeNews = () => {
-      setArticles({})
-      handleArticleError()
-      changeNews(filters)
-        .then((data: Everything) => setArticles(data))
-        .catch((error: Error) => {
-          handleArticleError(error.message)
-        })
-    }
 
     useEffect(() => {
       handleChangeNews()
@@ -82,24 +61,6 @@ const FilterNav:
 
     const changeLanguage = (selectedOptions: string[]) => {
       setTempfilters({ ...tempFilters, language: selectedOptions[0] })
-    }
-
-    const addDays = (date: Date, days: number) => {
-      const result = new Date(date)
-      result.setDate(result.getDate() + days)
-      return result
-    }
-
-    const formatDate = (date: string) => {
-      const d = new Date(date)
-      let month = `${d.getMonth() + 1}`
-      let day = `${d.getDate()}`
-      const year = d.getFullYear()
-
-      if (month.length < 2) month = `0${month}`
-      if (day.length < 2) day = `0${day}`
-
-      return [year, month, day].join('-')
     }
 
     const getRange = (range: string) => {
@@ -145,9 +106,9 @@ const FilterNav:
 
 FilterNav.defaultProps = {
   totalResults: 0,
-  changeNews: () => { },
-  setArticles: () => { },
-  handleArticleError: () => { },
+  handleChangeNews: () => { },
+  filters: {} as Request,
+  setFilters: () => { },
 }
 
 export default FilterNav
