@@ -34,3 +34,4 @@ export const formatDate = (date: string) => {
         return { to, from: formatDate(addDays(today, -1).toISOString()) }
     }
   }
+  

@@ -23,7 +23,7 @@ const Dropdown:
       options?.length > 0 ? (
         <i
           id="toggleIcon"
-          className={open ? styles.icon_triangule_up : styles.icon_triangule_down}
+          className={open ? styles.icon_triangle_up : styles.icon_triangle_down}
           aria-hidden="true"
         />
       ) : (

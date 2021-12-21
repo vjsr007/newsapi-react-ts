@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import styles from './styles.scss'
 
 export enum types {
-  sucess = 'success',
+  success = 'success',
   error = 'error',
   warning = 'warning',
 }
