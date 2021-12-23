@@ -1,5 +1,4 @@
 import { Article } from "../models/Article"
-import { Everything } from "../models/Everything"
 import { Source } from "../models/Source"
 
 //Dummy Article Data
