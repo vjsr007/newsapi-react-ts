@@ -119,9 +119,13 @@ const dummySources = [
     },
 ]
 
-export const dummyEveryThing: any = {
+export const responseArticles: any = {
     status: "ok",
     totalResults: 7,
     articles: dummyArticles as Article[],
+}
+
+export const responseSources: any = {
+    status: "ok",
     sources: dummySources as Source[],
 }

@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, screen, waitFor } from "@testing-library/react";
 import News from './index';
-import { dummyEveryThing } from '../../mock/NewsDummyData'
-import { act } from 'react-dom/test-utils';
+import { responseArticles, responseSources } from '../../mock/NewsDummyData'
+import { act } from 'react-dom/test-utils'
 
-const mockJsonPromise = Promise.resolve({ json: () => Promise.resolve(dummyEveryThing), ok: true })
-global.fetch = jest.fn().mockImplementation(() => mockJsonPromise)
+jest.mock('../../services/newsService', () => ({
+  changeNews: jest.fn(() => Promise.resolve(responseArticles)),  
+  getSources: jest.fn(() => Promise.resolve(responseSources)), 
+}))
 
 describe('News', () => {
   beforeEach(async () => {
