@@ -16,11 +16,15 @@ const Notification: FunctionComponent<({ message?: string, hide?: boolean, type:
       setShow(true)
       clearInterval(interval)
     }, 500)
+
+    return () => {
+      return clearInterval(interval)
+    }
   }
 
-  useEffect(() => executeInterval(), [])
+  useEffect(executeInterval, [])
 
-  useEffect(() => executeInterval(), [hide])
+  useEffect(executeInterval, [hide])
 
   const onClick = () => {
     setShow(false)

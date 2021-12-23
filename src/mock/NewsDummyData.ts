@@ -1,5 +1,8 @@
+import { Article } from "../models/Article"
+import { Everything } from "../models/Everything"
+
 //Dummy Article Data
-export const newsDummyData = [
+export const dummyArticles = [
     {
         "source": {
             "id": "the-next-web",
@@ -87,3 +90,9 @@ export const newsDummyData = [
         "publishedAt": "2019-03-12T10:00:00Z",
     }
 ]
+
+export const dummyEveryThing: Everything = {
+    status: "ok",
+    totalResults: 7,
+    articles: dummyArticles as Article[]
+}

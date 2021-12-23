@@ -4,7 +4,7 @@ import { Article } from '../../models/Article';
 import styles from './styles.scss'
 
 const ArticleComponent: FunctionComponent<({ item: Article })> = ({ item }) => (
-  <div className={styles.component}>
+  <div data-testid="article" className={styles.component}>
     <div className={styles.header}>
       <div className={styles.title}>{item.title}</div>
       <div className={styles.author}>{item.publishedAt}</div>

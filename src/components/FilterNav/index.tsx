@@ -11,8 +11,8 @@ import { Request } from '../../models/Everything'
 
 import CustomLabel from '../CustomLabel'
 
-const { lans, dates, sort } = require('../../constants/constants')
-const { getSources } = require('../../services/newsService')
+import { lans, dates, sort } from '../../constants/constants'
+import { getSources } from '../../services/newsService'
 
 import styles from './styles.scss'
 import { getRange } from '../../shared/utils'
@@ -66,7 +66,7 @@ const FilterNav:
     return (
       <div className={styles.component}>
         <div className={styles.header}>
-          <label className={styles.title}>News API</label>
+          <label data-testid="title" className={styles.title}>News API</label>
           <label className={styles.subtitle}>Use filters to get articles</label>
         </div>
         <div className={styles.form}>

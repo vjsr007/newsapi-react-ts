@@ -25,7 +25,7 @@ const News = () => {
   const [error, setError] = useState<string | undefined>(undefined)
   const [filters, setFilters] = useState<Request>(initialFilterState)
 
-  const handleArticleError = (message:string) : void => {
+  const handleArticleError = (message: string): void => {
     setError(message)
   }
 
@@ -33,11 +33,12 @@ const News = () => {
     setArticles({} as Everything)
     handleArticleError('')
     try {
-      setArticles(await changeNews(filters))
+      const response = await changeNews(filters)
+      setArticles(response)
     } catch (error: any) {
       handleArticleError(error.message)
     }
-  }  
+  }
 
   return (
     <div className={styles.component}>
