@@ -1,5 +1,6 @@
 import { Article } from "../models/Article"
 import { Everything } from "../models/Everything"
+import { Source } from "../models/Source"
 
 //Dummy Article Data
 export const dummyArticles = [
@@ -91,8 +92,36 @@ export const dummyArticles = [
     }
 ]
 
-export const dummyEveryThing: Everything = {
+const dummySources = [
+    {
+        "id": "abc-news",
+        "name": "ABC News"
+    },
+    {
+        "id": "abc-news-au",
+        "name": "ABC News (AU)"
+    },
+    {
+        "id": "aftenposten",
+        "name": "Aftenposten"
+    },
+    {
+        "id": "al-jazeera-english",
+        "name": "Al Jazeera English"
+    },
+    {
+        "id": "ansa",
+        "name": "ANSA.it"
+    },
+    {
+        "id": "argaam",
+        "name": "Argaam"
+    },
+]
+
+export const dummyEveryThing: any = {
     status: "ok",
     totalResults: 7,
-    articles: dummyArticles as Article[]
+    articles: dummyArticles as Article[],
+    sources: dummySources as Source[],
 }
