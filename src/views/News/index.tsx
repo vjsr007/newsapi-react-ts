@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import FilterNav from '../../components/FilterNav'
 import MainContent from '../../components/MainContent'
