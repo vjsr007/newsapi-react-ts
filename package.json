@@ -18,7 +18,7 @@
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!(quill-mention)/)"
-    ],    
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",

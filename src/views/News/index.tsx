@@ -8,7 +8,7 @@ import useFetchNews from '../../hooks/useFetchNews'
 
 const News = () => {
   const fetchNews = useFetchNews()
-
+  
   return (
     <div className={styles.component}>
       <FilterNav fetchNews={fetchNews} />

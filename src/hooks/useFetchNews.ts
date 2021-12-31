@@ -63,7 +63,8 @@ const useFetchNews = (initFilters?: Request) => {
         setArticles({} as Everything)
         setError('')
         try {
-            const response = await changeNews(filters)
+            const response: Everything = await changeNews(filters)
+            if(response.totalResults == 0) setError('No results found')
             setArticles(response)
         } catch (error: any) {
             setError(error.message)
