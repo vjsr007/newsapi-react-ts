@@ -23,50 +23,50 @@ const useFetchNews = (initFilters?: Request) => {
     const [filters, setFilters] = useState<Request>(initFilters || initialFilterState)
     const [sources, setSources] = useState<Source[]>([])
     const [tempFilters, setTempfilters] = useState<Request>(filters)
-    
+
     const handleArticleError = (message: string): void => {
         setError(message)
     }
 
     useEffect(() => {
         getSources().then((data: Sources) => setSources(data.sources))
-      }, [])
-  
-      useEffect(() => {
+    }, [])
+
+    useEffect(() => {
         handleChangeNews()
-      }, [filters])
-  
-      const updateFilters = () => {
+    }, [filters])
+
+    const updateFilters = () => {
         setFilters({ ...filters, ...tempFilters })
-      }
-  
-      const changePage = ({ page } : Request) => {
-        if(page !== filters.page) {
-          const newState = { ...filters, page }
-          setFilters(newState)
-          setTempfilters(newState)
+    }
+
+    const changePage = ({ page }: Request) => {
+        if (page !== filters.page) {
+            const newState = { ...filters, page }
+            setFilters(newState)
+            setTempfilters(newState)
         }
-      }
-  
-      const changeTopic:ChangeEventHandler<HTMLInputElement> = (event: ChangeEvent<HTMLInputElement>) => {
+    }
+
+    const changeTopic: ChangeEventHandler<HTMLInputElement> = (event: ChangeEvent<HTMLInputElement>) => {
         setTempfilters({ ...tempFilters, q: event.target.value })
-      }
-  
-      const changeSources = (selectedOptions: string[]) => {
+    }
+
+    const changeSources = (selectedOptions: string[]) => {
         setTempfilters({ ...tempFilters, sources: selectedOptions.map(option => option).join(',') })
-      }
-  
-      const changeSortBy = (selectedOptions:  string[]) => {
+    }
+
+    const changeSortBy = (selectedOptions: string[]) => {
         setTempfilters({ ...tempFilters, sortBy: selectedOptions[0] })
-      }
-  
-      const changeLanguage = (selectedOptions: string[]) => {
+    }
+
+    const changeLanguage = (selectedOptions: string[]) => {
         setTempfilters({ ...tempFilters, language: selectedOptions[0] })
-      }
-  
-      const changeDate = (selectedOptions: string[]) => {
+    }
+
+    const changeDate = (selectedOptions: string[]) => {
         setTempfilters({ ...tempFilters, ...getRange(selectedOptions[0]) })
-      }   
+    }
 
     const handleChangeNews = async () => {
         setArticles({} as Everything)
@@ -81,10 +81,6 @@ const useFetchNews = (initFilters?: Request) => {
 
     return {
         articles,
-        error,
-        filters,
-        handleChangeNews,
-        setFilters,
         sources,
         changePage,
         changeTopic,
@@ -92,7 +88,8 @@ const useFetchNews = (initFilters?: Request) => {
         changeSortBy,
         changeLanguage,
         changeDate,
-        updateFilters
+        updateFilters,
+        error
     }
 }
 

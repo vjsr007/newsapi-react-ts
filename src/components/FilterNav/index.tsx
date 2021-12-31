@@ -25,7 +25,7 @@ const FilterNav:
       changeLanguage,
       changeDate,
       updateFilters
-  } = fetchNews
+    } = fetchNews
 
     return (
       <div className={styles.component}>
