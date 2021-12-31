@@ -24,10 +24,6 @@ const useFetchNews = (initFilters?: Request) => {
     const [sources, setSources] = useState<Source[]>([])
     const [tempFilters, setTempfilters] = useState<Request>(filters)
 
-    const handleArticleError = (message: string): void => {
-        setError(message)
-    }
-
     useEffect(() => {
         getSources().then((data: Sources) => setSources(data.sources))
     }, [])
@@ -70,12 +66,12 @@ const useFetchNews = (initFilters?: Request) => {
 
     const handleChangeNews = async () => {
         setArticles({} as Everything)
-        handleArticleError('')
+        setError('')
         try {
             const response = await changeNews(filters)
             setArticles(response)
         } catch (error: any) {
-            handleArticleError(error.message)
+            setError(error.message)
         }
     }
 
