@@ -1,9 +1,8 @@
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react"
 import { Everything, Request } from "../models/Everything"
-import { Source } from "../models/Source"
-import { Sources } from "../models/Sources"
-import { changeNews, getSources } from "../services/newsService"
+import { changeNews } from "../services/newsService"
 import { getRange } from "../shared/utils"
+import useFetchSources from "./useFetchSources"
 
 const initialFilterState: Request = {
     page: 1,
@@ -21,12 +20,8 @@ const useFetchNews = (initFilters?: Request) => {
     const [articles, setArticles] = useState<Everything>({} as Everything)
     const [error, setError] = useState<string | undefined>(undefined)
     const [filters, setFilters] = useState<Request>(initFilters || initialFilterState)
-    const [sources, setSources] = useState<Source[]>([])
     const [tempFilters, setTempfilters] = useState<Request>(filters)
-
-    useEffect(() => {
-        getSources().then((data: Sources) => setSources(data.sources))
-    }, [])
+    const sources = useFetchSources()
 
     useEffect(() => {
         handleChangeNews()
