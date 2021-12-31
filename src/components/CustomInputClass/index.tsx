@@ -7,11 +7,11 @@ type CustomInputProps = { handleOnChange: ChangeEventHandler, defaultTitle: stri
 
 class CustomInputClass extends Component<{ handleOnChange: ChangeEventHandler, defaultTitle: string, defaultPlaceholder: string }> {
   static defaultProps = {
-    handleOnChange: () => {},
+    handleOnChange: () => { },
     defaultTitle: 'input your text',
     defaultPlaceholder: 'input your text',
   }
-  
+
   static propTypes = {
     handleOnChange: PropTypes.func,
     defaultTitle: PropTypes.string,

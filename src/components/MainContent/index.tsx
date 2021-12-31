@@ -8,7 +8,7 @@ import { Everything } from '../../models/Everything'
 
 import styles from './styles.scss'
 
-const MainContent:FunctionComponent<({ data: Everything, error?: string | undefined })> = ({ data, error }) => (
+const MainContent: FunctionComponent<({ data: Everything, error?: string | undefined })> = ({ data, error }) => (
   <div data-testid="main-content" className={styles.component}>
     {data?.articles?.length > 0 ? (
       <ArticleContainer data={data} />

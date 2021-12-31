@@ -10,7 +10,7 @@ const CustomButton: FunctionComponent<({ label: string, onClick: MouseEventHandl
 
 CustomButton.defaultProps = {
   label: 'Label',
-  onClick: () => {},
+  onClick: () => { },
 }
 
 export default CustomButton

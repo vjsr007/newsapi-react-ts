@@ -34,7 +34,7 @@ const Pager:
     const goToLast = () => {
       setPage(calculatePages())
     }
-    
+
     const goTo = (where: enumAction) => {
       switch (where) {
         case enumAction.first:

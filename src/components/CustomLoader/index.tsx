@@ -7,7 +7,7 @@ export const loaders = {
   cube: 'cube',
 }
 
-const CustomLoader:FunctionComponent<({ defaultLoader: string })> = ({ defaultLoader }) => {
+const CustomLoader: FunctionComponent<({ defaultLoader: string })> = ({ defaultLoader }) => {
   const spin = () => (
     <div className={styles.sk_fading_circle}>
       <div className={`${styles.sk_circle1} ${styles.sk_circle}`} />
